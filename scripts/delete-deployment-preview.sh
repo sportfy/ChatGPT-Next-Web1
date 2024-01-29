@@ -3,11 +3,11 @@
 set -o pipefail
 
 # Get the Vercel API endpoints.
-GET_DEPLOYMENTS_ENDPOINT="https://api.vercel.com/v6/deployments"
+GET_DEPLOYMENTS_ENDPOINT="https://api.vercel.com/v6/deployments",{"projectId":"$VERCEL_PROJECT_ID","teamId":"$VERCEL_ORG_ID"}
 DELETE_DEPLOYMENTS_ENDPOINT="https://api.vercel.com/v13/deployments"
 
 # Create a list of deployments.
-deployments=$(curl -s -X GET "$GET_DEPLOYMENTS_ENDPOINT/?projectId=$VERCEL_PROJECT_ID&teamId=$VERCEL_ORG_ID" -H "Authorization: Bearer $VERCEL_TOKEN ")
+deployments=$(curl -s -X GET "$GET_DEPLOYMENTS_ENDPOINT/?projectId=$VERCEL_PROJECT_ID&teamId=$VERCEL_ORG_ID" -H "Authorization: Bearer $VERCEL_TOKEN")
 #deployments=$(curl -s -X GET "$GET_DEPLOYMENTS_ENDPOINT/?projectId=$VERCEL_PROJECT_ID" -H "Authorization: Bearer $VERCEL_TOKEN ")
 
 # Filter the deployments list by meta.base_hash === meta tag.
