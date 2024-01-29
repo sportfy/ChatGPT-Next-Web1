@@ -28,7 +28,7 @@ for uid in "${values[@]}"; do
     echo $delete_url
 
     # Make DELETE a request to the /v13/deployments/{id} endpoint.
-    curl -X DELETE $delete_url -H "Authorization: Bearer $VERCEL_TOKEN"
+    curl -X DELETE $delete_url -H "Authorization: Bearer $VERCEL_TOKEN" -H "Authorization: Bearer $VERCEL_TOKEN"
 
     echo "Deleted!"
 done
